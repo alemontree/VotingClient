@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory } 
+      from 'react-router';
 import Voting from './components/Voting';
+import { VotingContainer } from "./components/Voting";
 import Results from './components/Results';
 
 
