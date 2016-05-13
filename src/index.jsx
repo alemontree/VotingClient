@@ -7,12 +7,18 @@ import { Router, Route, hashHistory }
 import { createStore } from 'redux';
 import reducer from './reducer';
 import { setState } from './action_creators';
+import remoteActionMiddleware from './remote_action_middleware';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import { VotingContainer } from "./components/Voting";
 import { ResultsContainer } from './components/Results';
 
-const store = createStore(reducer);
+
+const createStoreWithMiddleware = applyMiddleware(
+  remoteActionMiddleware(socket)
+)(createStore);
+const store = createStoreWithMiddleware(reducer);
+
 store.dispatch({
   type: 'SET_STATE',
   state: {
