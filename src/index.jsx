@@ -32,7 +32,7 @@ store.dispatch({
 const socket = 
   io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state => 
-  store.dispatch(setState(state));
+  store.dispatch(setState(state))
 );
 
 const routes = <Route component={App}>
