@@ -13,6 +13,8 @@ import io from 'socket.io-client';
 import { VotingContainer } from "./components/Voting";
 import { ResultsContainer } from './components/Results';
 
+const PORT = 8090;
+
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
@@ -30,7 +32,7 @@ store.dispatch({
 });
 
 const socket = 
-  io(`${location.protocol}//${location.hostname}:8090`);
+  io(`${location.protocol}//${location.hostname}:${PORT}`);
 socket.on('state', state => 
   store.dispatch(setState(state))
 );
